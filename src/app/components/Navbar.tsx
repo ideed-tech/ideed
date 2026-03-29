@@ -48,39 +48,47 @@ export function Navbar() {
       transition={{ duration: 0.5, ease: "easeOut" }}
       className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl transition-all duration-300 rounded-[2rem] ${
         scrolled 
-          ? "bg-white/30 backdrop-blur-2xl shadow-[0_8px_32px_rgba(0,0,0,0.08)] border border-white/50" 
-          : "bg-white/10 backdrop-blur-lg shadow-lg border border-white/20"
+          ? "bg-white/95 backdrop-blur-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.15)] border border-white/50" 
+          : "bg-white/20 backdrop-blur-md shadow-sm border border-white/30"
       }`}
     >
-      <div className="w-full px-6 md:px-8 h-16 flex items-center justify-between">
+      <div 
+        className={`w-full px-6 md:px-8 flex items-center justify-between transition-all duration-300 ${
+          scrolled ? "h-[70px]" : "h-[90px]"
+        }`}
+      >
         {/* Logo */}
         <button
           onClick={() => scrollTo("home")}
-          className="text-xl font-bold text-gray-900 tracking-tight"
+          className={`font-black text-gray-900 tracking-tight transition-all duration-300 ${
+            scrolled ? "text-xl scale-95" : "text-3xl scale-100"
+          }`}
           style={{ fontFamily: "Space Grotesk, sans-serif" }}
         >
           iDEED
         </button>
 
         {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-1">
+        <div className="hidden md:flex items-center gap-2">
           {navLinks.map((link) => {
             const isActive = activeSection === link.href;
             return (
               <button
                 key={link.label}
                 onClick={() => scrollTo(link.href)}
-                className={`relative px-4 py-2 text-sm transition-colors ${
+                className={`relative px-4 py-2 text-sm transition-colors group overflow-hidden ${
                   isActive ? "text-blue-700 font-bold" : "text-gray-700 hover:text-black font-medium"
                 }`}
               >
                 {link.label}
-                {isActive && (
+                {isActive ? (
                   <motion.div
                     layoutId="nav-underline"
-                    className="absolute bottom-0 left-4 right-4 h-[2px] bg-blue-600 rounded-full"
+                    className="absolute bottom-1 left-4 right-4 h-[2px] bg-blue-600 rounded-full"
                     transition={{ type: "spring", stiffness: 400, damping: 35 }}
                   />
+                ) : (
+                  <div className="absolute bottom-1 left-0 w-full h-[2px] bg-gray-900 transform scale-x-0 group-hover:scale-x-50 origin-center transition-transform duration-300 rounded-full" />
                 )}
               </button>
             );

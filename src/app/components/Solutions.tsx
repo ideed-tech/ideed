@@ -1,6 +1,12 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { motion, useInView } from "motion/react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Monitor, Pen, Wifi, Megaphone, ShoppingCart, Plus } from "lucide-react";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const services = [
   {
@@ -38,80 +44,124 @@ const services = [
     iconBg: "bg-emerald-100",
     iconColor: "text-emerald-600",
   },
+  {
+    icon: Plus,
+    title: "Custom Request",
+    description: "Looking for something incredibly specific? Tell us about your unique vision.",
+    iconBg: "bg-gray-100",
+    iconColor: "text-gray-600",
+  }
 ];
 
 export function Solutions() {
   const containerRef = useRef<HTMLElement>(null);
   const isInView = useInView(containerRef, { once: true, margin: "-80px" });
 
-  return (
-    <section id="solutions" ref={containerRef} className="bg-[#050914] py-24 md:py-32 w-full relative overflow-hidden">
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      const cards = gsap.utils.toArray<HTMLElement>(".service-card");
+      if (!cards.length) return;
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: "top top",
+          end: `+=${cards.length * 40}%`, // Much shorter overall scroll duration
+          pin: true,
+          scrub: 0.5, // Faster, tighter scrub
+          anticipatePin: 1
+        }
+      });
+
+      // Animate cards sequentially sliding in from the right to form a stack
+      cards.forEach((card, index) => {
+        // Skip index 0 entirely as it is already the starting base card
+        if (index === 0) return;
+
+        gsap.set(card, { 
+          x: "150%", 
+          rotation: 15, 
+          opacity: 0, 
+          scale: 0.8,
+          filter: "blur(20px)"
+        });
+
+        // Move the new card in
+        tl.to(card, {
+          x: "0%",
+          rotation: (index % 2 === 0 ? 2 : -2) * (index * 0.5), // slight alternating rotations
+          y: index * 6, // layer down slightly
+          opacity: 1,
+          scale: 1,
+          filter: "blur(0px)",
+          ease: "back.out(1)", // A snappier entrance ease!
+        });
+        
+        // Push all previously placed cards further back at the exact same time
+        tl.to(cards.slice(0, index), {
+          scale: "-=0.04",
+          y: "-=12",
+          // The bottom-most cards should fade slightly, but not completely
+          opacity: "-=0.15",
+          ease: "none"
+        }, "<"); // sync with the incoming card animation
+      });
       
-      {/* Header */}
-      <div className="w-full px-6 md:px-16 mb-12 md:mb-16">
-        <div className="max-w-7xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, x: -20 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tight"
-          >
-            Our Solutions
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, x: -20 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="mt-4 text-gray-400 font-medium text-lg lg:text-xl max-w-xl"
-          >
-            Multidisciplinary expertise synthesized into a singular scalable execution engine.
-          </motion.p>
-        </div>
-      </div>
+    }, containerRef);
+    
+    return () => ctx.revert();
+  }, []);
 
-      {/* Native Horizontal Scrolling Track */}
-      <div className="w-full flex overflow-x-auto snap-x snap-mandatory hide-scrollbar pl-6 md:pl-16 pr-6 md:pr-16 pb-12 gap-6 md:gap-10">
-          
-        {services.map((service, i) => (
+  return (
+    <section id="solutions" ref={containerRef} className="h-screen bg-[#F8FAFC] relative overflow-hidden flex items-center">
+      <div className="max-w-7xl mx-auto w-full px-6 md:px-12 flex flex-col md:flex-row h-full items-center justify-between">
+        
+        {/* Left Header Content */}
+        <div className="w-full md:w-1/2 flex flex-col justify-center h-1/3 md:h-full z-10">
           <motion.div
-            key={i}
-            whileHover={{ y: -8 }}
-            className="snap-start w-[320px] md:w-[420px] shrink-0 bg-[#0B0F19] rounded-[2rem] p-8 md:p-12 shadow-2xl border border-white/10 hover:border-white/20 transition-all flex flex-col justify-between h-[360px] md:h-[420px]"
+            initial={{ opacity: 0, x: -30 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <div
-              className={`w-16 h-16 md:w-20 md:h-20 rounded-3xl ${service.iconBg.replace('100', '900/30')} flex items-center justify-center mb-8 border border-white/5`}
-            >
-              <service.icon className={`w-8 h-8 md:w-10 md:h-10 ${service.iconColor.replace('600', '400')}`} strokeWidth={1.8} />
-            </div>
-            <div className="flex-1 flex flex-col justify-end">
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                {service.title}
-              </h3>
-              <p className="text-gray-400 font-medium leading-relaxed md:text-lg">
-                {service.description}
-              </p>
-            </div>
-          </motion.div>
-        ))}
-
-        {/* Custom Request Card */}
-        <motion.div
-          whileHover={{ y: -8 }}
-          className="snap-start w-[320px] md:w-[420px] shrink-0 bg-gradient-to-br from-[#0B0F19] to-blue-900/10 rounded-[2rem] p-8 md:p-12 shadow-2xl border-2 border-dashed border-white/10 hover:border-blue-400/50 hover:bg-blue-900/20 transition-all flex flex-col justify-between h-[360px] md:h-[420px] cursor-pointer group"
-        >
-          <div className="w-16 h-16 md:w-20 md:h-20 rounded-3xl border-2 border-white/10 flex items-center justify-center group-hover:border-blue-400/50 group-hover:bg-blue-500/10 transition-colors mb-8">
-            <Plus className="w-8 h-8 md:w-10 md:h-10 text-gray-500 group-hover:text-blue-400 transition-colors" />
-          </div>
-          <div className="flex-1 flex flex-col justify-end">
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-              Custom Request
-            </h3>
-            <p className="text-gray-400 font-medium leading-relaxed md:text-lg">
-              Looking for something incredibly specific? Tell us about your unique vision.
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 tracking-tight leading-tight">
+              Our <br className="hidden md:block"/> Solutions
+            </h2>
+            <p className="mt-6 text-blue-600 font-medium text-lg lg:text-xl max-w-sm">
+              Multidisciplinary expertise synthesized into a singular scalable execution engine.
             </p>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
 
+        {/* Right Stacked Cards */}
+        <div className="w-full md:w-1/2 h-2/3 md:h-full relative flex items-center justify-center md:justify-end lg:justify-center perspective-[1000px]">
+          
+          {services.map((service, i) => (
+            <div
+              key={i}
+              className={`service-card absolute w-[90%] sm:w-[360px] md:w-[380px] lg:w-[420px] rounded-[2rem] p-8 lg:p-10 shadow-2xl transition-colors flex flex-col justify-between min-h-[300px] lg:min-h-[340px] ${
+                i === services.length - 1 
+                  ? "bg-gradient-to-br from-white to-gray-50 border-2 border-dashed border-gray-200 cursor-pointer hover:border-blue-400 group" 
+                  : "bg-white border border-gray-100"
+              }`}
+              style={{ zIndex: i }}
+            >
+              <div
+                className={`w-14 h-14 lg:w-16 lg:h-16 rounded-3xl ${service.iconBg} flex items-center justify-center mb-6 border ${i === services.length - 1 ? 'border-gray-200 group-hover:border-blue-300 group-hover:bg-blue-100 transition-colors' : 'border-transparent'}`}
+              >
+                <service.icon className={`w-7 h-7 lg:w-8 lg:h-8 ${i === services.length - 1 ? 'text-gray-400 group-hover:text-blue-600 transition-colors' : service.iconColor}`} strokeWidth={1.8} />
+              </div>
+              <div className="flex-1 flex flex-col justify-end">
+                <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-3">
+                  {service.title}
+                </h3>
+                <p className={`font-medium leading-relaxed ${i === services.length - 1 ? 'text-gray-400 text-sm md:text-base' : 'text-gray-500 text-base md:text-lg'}`}>
+                  {service.description}
+                </p>
+              </div>
+            </div>
+          ))}
+
+        </div>
       </div>
     </section>
   );

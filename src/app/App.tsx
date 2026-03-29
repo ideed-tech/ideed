@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/Hero";
+import { HorizontalTextScroll } from "./components/HorizontalTextScroll";
 import { Story } from "./components/Story";
 import { Solutions } from "./components/Solutions";
 import { Process } from "./components/Process";
@@ -30,31 +31,32 @@ export default function App() {
 
   return (
     <div
-      className="min-h-screen bg-[#050914] text-white"
+      className="min-h-screen bg-[#F6F8FB]"
       style={{ fontFamily: "Inter, sans-serif" }}
     >
       <Navbar />
-      <main className="w-full overflow-hidden">
-        {/* Hero */}
-        <div className="bg-[#050914] w-full">
+      <main>
+        {/* Hero Section */}
+        <div className="bg-[#F6F8FB]">
           <Hero />
         </div>
-        {/* Story + Vision/Mission */}
+        
+        {/* Horizontal Scroll Brand Story */}
+        <HorizontalTextScroll />
+        
+        {/* About iDEED */}
         <Story />
-        {/* Solutions */}
+        
+        {/* Services */}
         <Solutions />
-        {/* Process */}
+        
+        {/* Process / Workflow */}
         <Process />
-        {/* Portfolio */}
+
+        {/* Projects */}
         <Portfolio images={PORTFOLIO_IMAGES} />
-        {/* Digital Products Globe */}
         <DigitalProductsGlobe />
-        {/* Stats */}
-        <Stats />
-        {/* FAQ */}
-        <FAQ />
-        {/* CTA */}
-        <CTA />
+        
         {/* Contact */}
         <Contact />
       </main>

@@ -2,9 +2,9 @@ import { Globe } from "./ui/interactive-globe";
 
 export function DigitalProductsGlobe() {
   return (
-    <section className="bg-[#050914] py-16 md:py-24 relative flex items-center justify-center px-4 md:px-8">
+    <section className="bg-transparent py-16 md:py-24 relative flex items-center justify-center px-4 md:px-8">
       
-      <div className="w-full max-w-6xl rounded-[2rem] border border-white/10 bg-[#0B0F19] overflow-hidden relative shadow-2xl">
+      <div className="w-full max-w-6xl rounded-[2.5rem] border border-white/10 bg-[#0B0F19] overflow-hidden relative shadow-2xl">
         {/* Ambient glow inside card */}
         <div className="absolute top-0 right-1/4 w-96 h-96 rounded-full bg-blue-500/10 blur-[100px] pointer-events-none" aria-hidden="true" />
 

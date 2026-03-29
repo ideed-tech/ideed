@@ -38,8 +38,8 @@ export function Process() {
     <section id="process" className="bg-[#050914]">
       <CinematicHero
         brandName="iDEED"
-        tagline1="How We"
-        tagline2="Build"
+        tagline1="How We Build"
+        tagline2=""
         cardHeading="How We Build"
         cardDescription={
           <>
