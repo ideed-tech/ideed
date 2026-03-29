@@ -5,6 +5,7 @@ import { Story } from "./components/Story";
 import { Solutions } from "./components/Solutions";
 import { Process } from "./components/Process";
 import { Portfolio } from "./components/Portfolio";
+import { DigitalProductsGlobe } from "./components/DigitalProductsGlobe";
 import { Stats } from "./components/Stats";
 import { FAQ } from "./components/FAQ";
 import { CTA } from "./components/CTA";
@@ -24,22 +25,18 @@ const PORTFOLIO_IMAGES = {
 
 export default function App() {
   useEffect(() => {
-    document.documentElement.style.scrollBehavior = "smooth";
     document.body.style.fontFamily = "Inter, sans-serif";
-    return () => {
-      document.documentElement.style.scrollBehavior = "";
-    };
   }, []);
 
   return (
     <div
-      className="min-h-screen bg-[#F6F8FB]"
+      className="min-h-screen bg-[#050914] text-white"
       style={{ fontFamily: "Inter, sans-serif" }}
     >
       <Navbar />
-      <main>
-        {/* Hero — white bg */}
-        <div className="bg-[#F6F8FB]">
+      <main className="w-full overflow-hidden">
+        {/* Hero */}
+        <div className="bg-[#050914] w-full">
           <Hero />
         </div>
         {/* Story + Vision/Mission */}
@@ -50,6 +47,8 @@ export default function App() {
         <Process />
         {/* Portfolio */}
         <Portfolio images={PORTFOLIO_IMAGES} />
+        {/* Digital Products Globe */}
+        <DigitalProductsGlobe />
         {/* Stats */}
         <Stats />
         {/* FAQ */}

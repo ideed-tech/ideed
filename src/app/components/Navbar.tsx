@@ -46,11 +46,13 @@ export function Navbar() {
       initial={{ y: -60, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-white/95 backdrop-blur-md shadow-[0_1px_0_rgba(0,0,0,0.06)]" : "bg-transparent"
+      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl transition-all duration-300 rounded-[2rem] ${
+        scrolled 
+          ? "bg-white/30 backdrop-blur-2xl shadow-[0_8px_32px_rgba(0,0,0,0.08)] border border-white/50" 
+          : "bg-white/10 backdrop-blur-lg shadow-lg border border-white/20"
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <div className="w-full px-6 md:px-8 h-16 flex items-center justify-between">
         {/* Logo */}
         <button
           onClick={() => scrollTo("home")}
@@ -69,7 +71,7 @@ export function Navbar() {
                 key={link.label}
                 onClick={() => scrollTo(link.href)}
                 className={`relative px-4 py-2 text-sm transition-colors ${
-                  isActive ? "text-blue-600 font-medium" : "text-gray-600 hover:text-gray-900"
+                  isActive ? "text-blue-700 font-bold" : "text-gray-700 hover:text-black font-medium"
                 }`}
               >
                 {link.label}
@@ -88,10 +90,10 @@ export function Navbar() {
         {/* CTA */}
         <div className="hidden md:block">
           <motion.button
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => scrollTo("cta")}
-            className="px-5 py-2.5 rounded-full bg-blue-600 text-white text-sm font-semibold hover:bg-blue-700 transition-colors shadow-md"
+            className="px-6 py-2.5 rounded-full bg-blue-600/90 backdrop-blur-sm text-white text-sm font-semibold hover:bg-blue-600 transition-colors shadow-[0_4px_14px_rgba(37,99,235,0.3)] border border-blue-400/30"
           >
             Start Your Project
           </motion.button>
@@ -99,7 +101,7 @@ export function Navbar() {
 
         {/* Mobile toggle */}
         <button
-          className="md:hidden p-2 text-gray-600 hover:text-gray-900"
+          className="md:hidden p-2 text-gray-800 hover:text-black hover:bg-white/20 rounded-full transition-colors"
           onClick={() => setMobileOpen(!mobileOpen)}
         >
           {mobileOpen ? <X size={20} /> : <Menu size={20} />}
@@ -110,31 +112,33 @@ export function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            className="md:hidden bg-white border-t border-gray-100 shadow-lg"
+            initial={{ opacity: 0, y: -10, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -10, scale: 0.95 }}
+            className="md:hidden absolute top-[115%] left-0 right-0 bg-white/60 backdrop-blur-3xl border border-white/50 shadow-2xl rounded-3xl overflow-hidden"
           >
-            <div className="max-w-6xl mx-auto px-6 py-4 flex flex-col gap-1">
+            <div className="px-4 py-5 flex flex-col gap-2">
               {navLinks.map((link) => (
                 <button
                   key={link.label}
                   onClick={() => scrollTo(link.href)}
-                  className={`text-left px-3 py-3 rounded-lg text-sm ${
+                  className={`text-left px-5 py-3 rounded-2xl text-base transition-all ${
                     activeSection === link.href
-                      ? "text-blue-600 font-medium bg-blue-50"
-                      : "text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                      ? "text-blue-700 font-bold bg-white/50 shadow-sm border border-white/60"
+                      : "text-gray-700 hover:text-gray-900 font-medium hover:bg-white/30"
                   }`}
                 >
                   {link.label}
                 </button>
               ))}
-              <button
-                onClick={() => scrollTo("cta")}
-                className="mt-2 px-4 py-3 rounded-full bg-blue-600 text-white text-sm font-semibold text-center"
-              >
-                Start Your Project
-              </button>
+              <div className="pt-2 pb-1 px-1">
+                <button
+                  onClick={() => scrollTo("cta")}
+                  className="w-full py-4 rounded-2xl bg-blue-600/90 text-white text-base font-bold text-center shadow-[0_4px_14px_rgba(37,99,235,0.3)] border border-blue-400/30 backdrop-blur-md"
+                >
+                  Start Your Project
+                </button>
+              </div>
             </div>
           </motion.div>
         )}
