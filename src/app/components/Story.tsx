@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "motion/react";
 import { Eye, Rocket } from "lucide-react";
+import { InteractiveImageAccordion } from "./ui/interactive-image-accordion";
 
 const storyLines = [
   "We design digital experiences.",
@@ -24,45 +25,59 @@ export function Story() {
         </span>
       </div>
 
-      <div className="max-w-6xl mx-auto px-6 relative">
-        <div className="max-w-xl">
-          {/* Accent line */}
-          <motion.div
-            initial={{ scaleX: 0, opacity: 0 }}
-            animate={isInView ? { scaleX: 1, opacity: 1 } : {}}
-            transition={{ duration: 0.5 }}
-            className="w-10 h-0.5 bg-gradient-to-r from-blue-600 to-indigo-400 mb-5 origin-left"
-          />
+      <div className="max-w-7xl mx-auto px-6 relative">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
+          {/* Left Side: Text Content */}
+          <div className="w-full lg:w-1/2 text-left">
+            {/* Accent line */}
+            <motion.div
+              initial={{ scaleX: 0, opacity: 0 }}
+              animate={isInView ? { scaleX: 1, opacity: 1 } : {}}
+              transition={{ duration: 0.5 }}
+              className="w-10 h-0.5 bg-gradient-to-r from-blue-600 to-indigo-400 mb-5 origin-left"
+            />
 
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl font-black text-gray-950 mb-10"
-          >
-            Our Story
-          </motion.h2>
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6 }}
+              className="text-4xl md:text-5xl font-black text-gray-950 mb-10"
+            >
+              Our Story
+            </motion.h2>
 
-          <div className="space-y-5">
-            {storyLines.map((line, i) => (
+            <div className="space-y-5">
+              {storyLines.map((line, i) => (
+                <motion.p
+                  key={i}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.1 + i * 0.1 }}
+                  className="text-gray-500 text-lg md:text-xl"
+                >
+                  {line}
+                </motion.p>
+              ))}
               <motion.p
-                key={i}
                 initial={{ opacity: 0, x: -20 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.1 + i * 0.1 }}
-                className="text-gray-500 text-lg md:text-xl"
+                transition={{ duration: 0.5, delay: 0.55 }}
+                className="text-blue-600 font-bold text-lg md:text-xl"
               >
-                {line}
+                We are iDEED.
               </motion.p>
-            ))}
-            <motion.p
-              initial={{ opacity: 0, x: -20 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.55 }}
-              className="text-blue-600 font-bold text-lg md:text-xl"
+            </div>
+          </div>
+
+          {/* Right Side: Image Accordion */}
+          <div className="w-full lg:w-1/2">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={isInView ? { opacity: 1, scale: 1 } : {}}
+              transition={{ duration: 0.7, delay: 0.3 }}
             >
-              We are iDEED.
-            </motion.p>
+              <InteractiveImageAccordion />
+            </motion.div>
           </div>
         </div>
       </div>
