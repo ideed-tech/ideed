@@ -15,10 +15,8 @@ import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
 
 const PORTFOLIO_IMAGES = {
-  project1:
-    "https://images.unsplash.com/photo-1701056035581-9df3eec9fe02?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBwcmVtaXVtJTIwZGFyayUyMHByb2R1Y3QlMjBmaW50ZWNofGVufDF8fHx8MTc3NDgwNzkzMHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-  project2:
-    "https://images.unsplash.com/photo-1634836023845-eddbfe9937da?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtaW5pbWFsJTIwZGFyayUyMGNvbXB1dGVyJTIwbW9uaXRvciUyMGRlc2t0b3AlMjB3b3Jrc3BhY2V8ZW58MXx8fHwxNzc0ODA3OTMwfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+  project1: "/logo.jpg",
+  project2: "/triphaseagro.png",
   project3:
     "https://images.unsplash.com/photo-1720962158883-b0f2021fb51e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkYXJrJTIwdGVjaCUyMGFwcCUyMGludGVyZmFjZSUyMHNsZWVrJTIwZGVzaWdufGVufDF8fHx8MTc3NDgwNzkzNHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
   project4:
@@ -87,8 +85,8 @@ export default function App() {
       <button
         onClick={() => {
           const el = document.getElementById("home");
-          if (el) el.scrollIntoView({ behavior: "smooth" });
-          else window.scrollTo({ top: 0, behavior: "smooth" });
+          if (el) el.scrollIntoView({ behavior: "auto" }); // Change from 'smooth' to 'auto'
+          else window.scrollTo({ top: 0, behavior: "auto" }); // Change from 'smooth' to 'auto'
         }}
         className="fixed bottom-6 right-6 z-50 p-3 bg-white/80 backdrop-blur-md rounded-full shadow-lg border border-gray-200 text-gray-500 hover:text-blue-600 hover:bg-white transition-all transform hover:scale-105 active:scale-95"
         aria-label="Scroll to top"

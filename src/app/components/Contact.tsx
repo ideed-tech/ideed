@@ -115,7 +115,7 @@ export function Contact() {
               <div className="space-y-5">
                 {[
                   { icon: Mail, label: "Email", value: "ideed.support@gmail.com" },
-                  { icon: Phone, label: "Phone", value: "+91 8778 70 70 86" },
+                  { icon: Phone, label: "Phone", value: "+91 8778 70 70 86, +91 9487 67 61 06" },
                   { icon: MapPin, label: "Location", value: "Madurai, Tamil Nadu, India" },
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-4">

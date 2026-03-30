@@ -111,7 +111,7 @@ export function Solutions() {
   }, []);
 
   return (
-    <section id="solutions" ref={containerRef} className="h-screen bg-[#F8FAFC] relative overflow-hidden flex items-center">
+    <section id="solutions" ref={containerRef} className="h-screen bg-[#F8FAFC] relative overflow-hidden flex items-center pb-32 md:pb-48">
       <div className="max-w-7xl mx-auto w-full px-6 md:px-12 flex flex-col md:flex-row h-full items-center justify-between">
         
         {/* Left Header Content */}

@@ -35,10 +35,10 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollTo = (id: string) => {
+  const scrollTo = (id: string | any) => {
     setMobileOpen(false);
     const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    if (el) el.scrollIntoView({ behavior: "auto" }); // Change from 'smooth' to 'auto' (instant)
   };
 
   const handleLogoClick = async () => {
@@ -56,7 +56,7 @@ export function Navbar() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl transition-[background-color,backdrop-filter,box-shadow,border-color] duration-300 rounded-[2rem] ${
+      className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl transition-[background-color,backdrop-filter,box-shadow,border-color] duration-300 rounded-[2rem] hidden md:flex ${
         scrolled 
           ? "bg-white/95 backdrop-blur-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.15)] border border-white/50" 
           : "bg-white/20 backdrop-blur-md shadow-sm border border-white/30"
@@ -64,7 +64,7 @@ export function Navbar() {
     >
       <div 
         className={`w-full px-6 md:px-8 flex items-center justify-between transition-all duration-300 ${
-          scrolled ? "h-[70px]" : "h-[90px]"
+          scrolled ? "h-[60px]" : "h-[75px]"
         }`}
       >
         {/* Logo */}

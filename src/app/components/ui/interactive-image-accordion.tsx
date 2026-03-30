@@ -46,7 +46,7 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ item, isActive, onMouseEn
       className={`
         relative h-[300px] sm:h-[400px] md:h-[450px] rounded-2xl overflow-hidden cursor-pointer
         transition-all duration-700 ease-in-out flex-shrink-0
-        ${isActive ? 'w-[200px] sm:w-[300px] md:w-[400px]' : 'w-[40px] sm:w-[50px] md:w-[60px]'}
+        ${isActive ? 'w-[140px] sm:w-[300px] md:w-[400px]' : 'w-[25px] sm:w-[50px] md:w-[60px]'}
       `}
       onMouseEnter={onMouseEnter}
     >
@@ -87,7 +87,7 @@ export function InteractiveImageAccordion() {
   };
 
   return (
-    <div className="flex flex-row items-center justify-center gap-4 overflow-x-auto p-4 w-full h-full">
+    <div className="flex flex-row items-center justify-center gap-2 sm:gap-4 overflow-hidden py-4 w-full h-full max-w-full">
       {accordionItems.map((item, index) => (
         <AccordionItem
           key={item.id}

@@ -1,35 +1,36 @@
 import { motion } from "motion/react";
-import { Linkedin, Instagram, Twitter, Github } from "lucide-react";
+import { Linkedin, Instagram, Github } from "lucide-react";
 
 const footerLinks = {
   services: [
-    "Web Development",
-    "Mobile App Development",
-    "UI/UX Design",
-    "Logo & Branding",
-    "Digital Marketing",
-    "IoT Solutions",
-    "Maintenance & Support"
+    { label: "Web Development", href: "solutions" },
+    { label: "Mobile App Development", href: "solutions" },
+    { label: "UI/UX Design", href: "solutions" },
+    { label: "Logo & Branding", href: "solutions" },
+    { label: "Digital Marketing", href: "solutions" },
+    { label: "IoT Solutions", href: "solutions" },
+    { label: "Maintenance & Support", href: "contact" },
   ],
   company: [
-    "About Us",
-    "Services",
-    "Projects",
-    "Our Process",
-    "Contact",
-    "Privacy Policy",
-    "Terms & Conditions"
+    { label: "About Us", href: "story" },
+    { label: "Services", href: "solutions" },
+    { label: "Projects", href: "portfolio" },
+    { label: "Our Process", href: "process" },
+    { label: "Contact", href: "contact" },
   ],
   socials: [
     { label: "LinkedIn", icon: Linkedin, link: "https://www.linkedin.com/company/ideedtech/" },
-    { label: "Instagram", icon: Instagram, link: "#" },
-    { label: "Twitter", icon: Twitter, link: "#" },
-    { label: "GitHub", icon: Github, link: "#" },
-    { label: "Behance", icon: undefined, link: "#" } 
+    { label: "Instagram", icon: Instagram, link: "https://www.instagram.com/ideed.tech?igsh=MXZ2NWk1N2NwdDh2OA==" },
+    { label: "GitHub", icon: Github, link: "https://github.com/ideed-tech" },
   ]
 };
 
 export function Footer() {
+  const scrollTo = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "auto" });
+  };
+
   return (
     <footer className="relative bg-white border-t border-gray-100 overflow-hidden pt-20 pb-8 text-gray-600">
       
@@ -77,10 +78,13 @@ export function Footer() {
             <h4 className="text-gray-950 font-bold mb-6 tracking-wide" style={{ fontFamily: "Space Grotesk, sans-serif" }}>Services</h4>
             <ul className="space-y-3">
               {footerLinks.services.map(link => (
-                <li key={link}>
-                  <a href="#" className="text-gray-500 hover:text-blue-600 font-medium transition-colors text-sm hover:translate-x-1 inline-block transform duration-300">
-                    {link}
-                  </a>
+                <li key={link.label}>
+                  <button
+                    onClick={() => scrollTo(link.href)}
+                    className="text-gray-500 hover:text-blue-600 font-medium transition-colors text-sm hover:translate-x-1 inline-block transform duration-300 text-left"
+                  >
+                    {link.label}
+                  </button>
                 </li>
               ))}
             </ul>
@@ -91,10 +95,13 @@ export function Footer() {
             <h4 className="text-gray-950 font-bold mb-6 tracking-wide" style={{ fontFamily: "Space Grotesk, sans-serif" }}>Company</h4>
             <ul className="space-y-3">
               {footerLinks.company.map(link => (
-                <li key={link}>
-                  <a href="#" className="text-gray-500 hover:text-blue-600 font-medium transition-colors text-sm hover:translate-x-1 inline-block transform duration-300">
-                    {link}
-                  </a>
+                <li key={link.label}>
+                  <button
+                    onClick={() => scrollTo(link.href)}
+                    className="text-gray-500 hover:text-blue-600 font-medium transition-colors text-sm hover:translate-x-1 inline-block transform duration-300 text-left"
+                  >
+                    {link.label}
+                  </button>
                 </li>
               ))}
             </ul>
@@ -110,7 +117,10 @@ export function Footer() {
               </li>
               <li className="text-gray-500 text-sm">
                 <span className="block text-gray-400 mb-0.5 text-xs uppercase font-bold tracking-widest">Phone</span>
-                <span className="font-medium text-gray-700">+91 8778 70 70 86</span>
+                <div className="flex flex-col gap-1">
+                  <a href="tel:+918778707086" className="font-medium text-gray-700 hover:text-blue-600 transition-colors">+91 8778 70 70 86</a>
+                  <a href="tel:+919487676106" className="font-medium text-gray-700 hover:text-blue-600 transition-colors">+91 9487 67 61 06</a>
+                </div>
               </li>
               <li className="text-gray-500 text-sm">
                 <span className="block text-gray-400 mb-0.5 text-xs uppercase font-bold tracking-widest">Location</span>
@@ -147,12 +157,15 @@ export function Footer() {
           </div>
 
           {/* Bottom Footer Line */}
-          <div className="text-center lg:text-right space-y-1">
+          <div className="text-center lg:text-right space-y-2">
             <p className="text-gray-900 text-sm font-bold">
-              © 2026 iDEED — Turning Ideas Into Deeds.
+              iDEED — All Copyright Reserved 2026
             </p>
-            <p className="text-gray-500 text-xs tracking-wide font-medium">
-              Web • Mobile • Design • IoT • Digital Solutions
+            <p className="text-gray-500 text-[11px] tracking-wide font-medium uppercase">
+              Web • Mobile • Design • IoT • Digital Solutions  
+            </p>
+            <p className="text-[10px] text-blue-600 font-bold uppercase tracking-[0.15em] italic">
+              Designed by Hamenath B
             </p>
           </div>
           

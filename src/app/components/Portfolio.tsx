@@ -18,10 +18,10 @@ interface PortfolioProps {
 
 const projects = [
   {
-    title: "Nexus IoT Platform",
-    subtitle: "Enterprise Hardware Management",
-    tag: "IoT / Dashboard",
-    link: "https://triphase-agro-3aa4-git-main-sivas-projects-8e66567b.vercel.app/"
+    title: "iDEED Platform",
+    subtitle: "Project Management for Creatives",
+    tag: "SaaS / CRM",
+    link: "#"
   },
   {
     title: "Triphase Agro",
@@ -34,7 +34,7 @@ const projects = [
 export function Portfolio({ images }: PortfolioProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
-  const imgKeys: (keyof typeof images)[] = ["project3", "project4"];
+  const imgKeys: (keyof typeof images)[] = ["project1", "project2"];
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -103,18 +103,16 @@ export function Portfolio({ images }: PortfolioProps) {
               className="portfolio-card group bg-gray-50/50 rounded-[2rem] p-4 border border-transparent hover:border-gray-100 transition-all"
             >
               {/* Image */}
-              <div className="relative rounded-2xl overflow-hidden bg-gray-900 aspect-[4/3]">
-                <ImageWithFallback
+              <div className="relative rounded-2xl overflow-hidden bg-white aspect-[4/3] border border-gray-100 flex items-center justify-center">
+                <img
                   src={images[imgKeys[i]]}
                   alt={project.title}
-                  className="w-full h-full object-cover opacity-70 group-hover:opacity-85 group-hover:scale-105 transition-all duration-500"
+                  className="w-full h-full object-contain p-8 group-hover:scale-105 transition-all duration-500"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = "https://placehold.co/600x400/F9FAFB/111827?text=Image+Loading";
+                  }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-                <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[10px] uppercase font-bold tracking-wider">
-                    {project.tag}
-                  </span>
-                </div>
               </div>
 
               {/* Info */}
@@ -126,14 +124,20 @@ export function Portfolio({ images }: PortfolioProps) {
                   <p className="text-gray-400 text-xs mt-0.5">{project.subtitle}</p>
                 </div>
                 
-                <a 
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600 text-white text-xs font-bold hover:bg-blue-700 transition-colors shadow-lg shadow-blue-500/20"
-                >
-                  Live Demo <ArrowRight size={14} />
-                </a>
+                {project.link !== "#" ? (
+                  <a 
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600 text-white text-xs font-bold hover:bg-blue-700 transition-colors shadow-lg shadow-blue-500/20"
+                  >
+                    Live Demo <ArrowRight size={14} />
+                  </a>
+                ) : (
+                  <div className="px-4 py-2 rounded-xl bg-gray-100 text-gray-400 text-xs font-bold border border-gray-200">
+                    Coming Soon
+                  </div>
+                )}
               </div>
             </motion.div>
           ))}

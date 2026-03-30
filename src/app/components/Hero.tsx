@@ -28,7 +28,7 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-32 md:pt-32 pb-32"
     >
       {/* Very subtle background */}
       <div className="absolute inset-0 -z-10">
@@ -45,6 +45,20 @@ export function Hero() {
       </div>
 
       <div className="max-w-5xl mx-auto px-6 text-center relative">
+        {/* Logo - Mobile Only Centered */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6 }}
+          className="flex justify-center mb-6 md:hidden"
+        >
+          <img 
+            src="/logo.jpg" 
+            alt="iDEED Logo" 
+            className="w-24 h-24 rounded-2xl shadow-xl border border-white/50 object-cover"
+          />
+        </motion.div>
+
         {/* Badge */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -66,7 +80,7 @@ export function Hero() {
         </motion.h1>
         
         {/* Animated Headline Words */}
-        <div className="relative flex w-full justify-center overflow-hidden text-center h-[60px] sm:h-[70px] md:h-[100px] lg:h-[120px] mb-6 sm:mb-10 pb-2">
+        <div className="relative flex w-full justify-center overflow-hidden text-center h-[50px] sm:h-[70px] md:h-[100px] lg:h-[120px] mb-6 sm:mb-10 pb-2">
           {titles.map((title, index) => (
             <motion.h1
               key={index}
