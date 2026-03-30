@@ -30,7 +30,7 @@ export function Contact() {
         "service_kn6z198",
         "template_ua382qf",
         formData,
-        "IhfZK-dOg8HkPlms_"
+        "lhfZK-dOg8HkPIms_"
       );
 
       // 2. Save lead to Firestore
