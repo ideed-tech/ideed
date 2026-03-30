@@ -11,28 +11,24 @@ import { AdminSettings } from "./app/pages/AdminSettings.tsx";
 import "./styles/index.css";
 import emailjs from "@emailjs/browser";
 
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
 emailjs.init("IhfZK-dOg8HkPlms_");
 
 const root = createRoot(document.getElementById("root")!);
 
-const path = window.location.pathname;
-
-if (path === "/admin") {
-  root.render(<AdminDashboard />);
-} else if (path === "/admin/login") {
-  root.render(<AdminLogin />);
-} else if (path === "/admin/leads") {
-  root.render(<AdminLeads />);
-} else if (path === "/admin/clients") {
-  root.render(<AdminClients />);
-} else if (path === "/admin/projects") {
-  root.render(<AdminProjects />);
-} else if (path === "/admin/todo") {
-  root.render(<AdminTodo />);
-} else if (path === "/admin/files") {
-  root.render(<AdminFiles />);
-} else if (path === "/admin/settings") {
-  root.render(<AdminSettings />);
-} else {
-  root.render(<App />);
-}
+root.render(
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<App />} />
+      <Route path="/admin" element={<AdminDashboard />} />
+      <Route path="/admin/login" element={<AdminLogin />} />
+      <Route path="/admin/leads" element={<AdminLeads />} />
+      <Route path="/admin/clients" element={<AdminClients />} />
+      <Route path="/admin/projects" element={<AdminProjects />} />
+      <Route path="/admin/todo" element={<AdminTodo />} />
+      <Route path="/admin/files" element={<AdminFiles />} />
+      <Route path="/admin/settings" element={<AdminSettings />} />
+    </Routes>
+  </BrowserRouter>
+);
