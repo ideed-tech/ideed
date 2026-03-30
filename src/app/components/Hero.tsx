@@ -60,17 +60,17 @@ export function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="text-6xl md:text-7xl lg:text-8xl font-black text-gray-950 leading-tight tracking-tight mb-4"
+          className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black text-gray-950 leading-tight tracking-tight mb-4"
         >
           We Build Ideas Into
         </motion.h1>
         
         {/* Animated Headline Words */}
-        <div className="relative flex w-full justify-center overflow-hidden text-center h-[80px] md:h-[100px] lg:h-[120px] mb-10 pb-2">
+        <div className="relative flex w-full justify-center overflow-hidden text-center h-[60px] sm:h-[70px] md:h-[100px] lg:h-[120px] mb-6 sm:mb-10 pb-2">
           {titles.map((title, index) => (
             <motion.h1
               key={index}
-              className="absolute text-6xl md:text-7xl lg:text-8xl font-black leading-tight tracking-tight"
+              className="absolute text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black leading-tight tracking-tight"
               style={{
                 background: "linear-gradient(135deg, #2563EB 0%, #7C3AED 60%, #C026D3 100%)",
                 WebkitBackgroundClip: "text",

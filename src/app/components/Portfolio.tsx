@@ -57,7 +57,7 @@ export function Portfolio({ images }: PortfolioProps) {
   }, []);
 
   return (
-    <section id="portfolio" ref={sectionRef} className="py-28 bg-white">
+    <section id="portfolio" ref={sectionRef} className="py-16 md:py-28 bg-white">
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="flex items-end justify-between mb-12">
@@ -66,7 +66,7 @@ export function Portfolio({ images }: PortfolioProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6 }}
-              className="text-4xl md:text-5xl font-black text-gray-950"
+              className="text-3xl md:text-5xl font-black text-gray-950"
               style={{ fontFamily: "Space Grotesk, sans-serif" }}
             >
               Featured Projects

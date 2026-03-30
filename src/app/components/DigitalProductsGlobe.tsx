@@ -11,14 +11,14 @@ export function DigitalProductsGlobe() {
         <div className="flex flex-col lg:flex-row min-h-[500px] relative z-10">
           
           {/* Left Content */}
-          <div className="flex-1 w-full text-center lg:text-left flex flex-col justify-center p-10 md:p-16">
+          <div className="flex-1 w-full text-center lg:text-left flex flex-col justify-center p-6 sm:p-10 md:p-16">
              
              <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-[11px] font-medium text-gray-300 mb-8 w-fit mx-auto lg:mx-0 tracking-wider uppercase">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
                 Global Digital Reach
              </div>
 
-             <h2 className="text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-white leading-[1.1] tracking-tight mb-6">
+             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-bold text-white leading-[1.1] tracking-tight mb-6">
                Turning Ideas Into <br />
                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
                   Digital Products
@@ -30,7 +30,7 @@ export function DigitalProductsGlobe() {
              </p>
 
              {/* Metrics / Specialties Bottom Grid */}
-             <div className="flex items-center justify-center lg:justify-start gap-8 md:gap-12">
+             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-8 md:gap-12">
                 <div className="flex flex-col items-center lg:items-start space-y-1">
                    <p className="text-lg md:text-xl font-bold text-white leading-none">Web &</p>
                    <p className="text-xs text-gray-500 font-medium">Mobile Apps</p>

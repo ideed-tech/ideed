@@ -299,10 +299,10 @@ export function CinematicHero({
 
       {/* BACKGROUND LAYER: Hero Texts */}
       <div className="hero-text-wrapper absolute z-10 flex flex-col items-center justify-center text-center w-screen px-4 will-change-transform transform-style-3d">
-        <h1 className="text-track gsap-reveal text-3d-matte text-[40px] md:text-6xl lg:text-[5.5rem] font-bold tracking-tight mb-2">
+        <h1 className="text-track gsap-reveal text-3d-matte text-4xl sm:text-[40px] md:text-6xl lg:text-[5.5rem] font-bold tracking-tight mb-2">
           {tagline1}
         </h1>
-        <h1 className="text-days gsap-reveal text-silver-matte text-[40px] md:text-6xl lg:text-[5.5rem] font-extrabold tracking-tighter">
+        <h1 className="text-days gsap-reveal text-silver-matte text-4xl sm:text-[40px] md:text-6xl lg:text-[5.5rem] font-extrabold tracking-tighter">
           {tagline2}
         </h1>
       </div>
@@ -321,7 +321,7 @@ export function CinematicHero({
             
             {/* 1. TOP (Mobile) / RIGHT (Desktop): BRAND NAME */}
             <div className="card-right-text gsap-reveal order-1 lg:order-3 flex justify-center lg:justify-end z-20 w-full">
-              <h2 className="text-6xl md:text-[6rem] lg:text-[8rem] font-black uppercase tracking-tighter text-card-silver-matte lg:mt-0">
+              <h2 className="text-5xl sm:text-6xl md:text-[6rem] lg:text-[8rem] font-black uppercase tracking-tighter text-card-silver-matte lg:mt-0 text-center">
                 {brandName}
               </h2>
             </div>
@@ -330,7 +330,7 @@ export function CinematicHero({
             <div className="mockup-scroll-wrapper order-2 lg:order-2 relative w-full h-[380px] lg:h-[600px] flex items-center justify-center z-10" style={{ perspective: "1000px" }}>
               
               {/* Inner wrapper for safe CSS scaling that doesn't conflict with GSAP */}
-              <div className="relative w-full h-full flex items-center justify-center transform scale-[0.65] md:scale-85 lg:scale-100">
+              <div className="relative w-full h-full flex items-center justify-center transform scale-[0.55] sm:scale-[0.65] md:scale-[0.85] lg:scale-100">
                 
                 {/* The iPhone Bezel */}
                 <div
@@ -401,7 +401,7 @@ export function CinematicHero({
 
             {/* 3. BOTTOM (Mobile) / LEFT (Desktop): ACCOUNTABILITY TEXT */}
             <div className="card-left-text gsap-reveal order-3 lg:order-1 flex flex-col justify-center text-center lg:text-left z-20 w-full lg:max-w-none px-4 lg:px-0">
-              <h3 className="text-white text-2xl md:text-3xl lg:text-4xl font-bold mb-0 lg:mb-5 tracking-tight">
+              <h3 className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-0 lg:mb-5 tracking-tight">
                 {cardHeading}
               </h3>
               <div className="block mt-4 text-blue-100/70 text-sm md:text-base lg:text-lg font-normal leading-relaxed mx-auto lg:mx-0 max-w-sm lg:max-w-none">

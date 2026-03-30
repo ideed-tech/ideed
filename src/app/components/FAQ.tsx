@@ -36,14 +36,14 @@ export function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(2);
 
   return (
-    <section id="faq" ref={sectionRef} className="py-28 bg-[#F6F8FB]">
+    <section id="faq" ref={sectionRef} className="py-16 md:py-28 bg-[#F6F8FB]">
       <div className="max-w-3xl mx-auto px-6">
         {/* Header */}
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-black text-gray-950 text-center mb-14"
+          className="text-3xl md:text-5xl font-black text-gray-950 text-center mb-10 md:mb-14"
           style={{ fontFamily: "Space Grotesk, sans-serif" }}
         >
           Common Queries

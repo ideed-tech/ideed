@@ -121,7 +121,7 @@ export function Solutions() {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 tracking-tight leading-tight">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-gray-900 tracking-tight leading-tight">
               Our <br className="hidden md:block"/> Solutions
             </h2>
             <p className="mt-6 text-blue-600 font-medium text-lg lg:text-xl max-w-sm">
@@ -136,7 +136,7 @@ export function Solutions() {
           {services.map((service, i) => (
             <div
               key={i}
-              className={`service-card absolute w-[90%] sm:w-[360px] md:w-[380px] lg:w-[420px] rounded-[2rem] p-8 lg:p-10 shadow-2xl transition-colors flex flex-col justify-between min-h-[300px] lg:min-h-[340px] ${
+              className={`service-card absolute w-[90%] sm:w-[360px] md:w-[380px] lg:w-[420px] rounded-[1.5rem] md:rounded-[2rem] p-6 sm:p-8 lg:p-10 shadow-2xl transition-colors flex flex-col justify-between min-h-[260px] sm:min-h-[300px] lg:min-h-[340px] ${
                 i === services.length - 1 
                   ? "bg-gradient-to-br from-white to-gray-50 border-2 border-dashed border-gray-200 cursor-pointer hover:border-blue-400 group" 
                   : "bg-white border border-gray-100"

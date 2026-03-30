@@ -39,7 +39,7 @@ export function Stats() {
   }, []);
 
   return (
-    <section id="stats" ref={sectionRef} className="py-28 bg-white">
+    <section id="stats" ref={sectionRef} className="py-16 md:py-28 bg-white">
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16 space-y-3">
@@ -47,7 +47,7 @@ export function Stats() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl font-black text-gray-950"
+            className="text-3xl md:text-5xl font-black text-gray-950"
             style={{ fontFamily: "Space Grotesk, sans-serif" }}
           >
             By the Numbers
@@ -63,15 +63,15 @@ export function Stats() {
         </div>
 
         {/* Stats grid */}
-        <div className="stats-grid grid grid-cols-2 lg:grid-cols-4 gap-px bg-gray-100 rounded-2xl overflow-hidden border border-gray-100">
+        <div className="stats-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-gray-100 rounded-2xl overflow-hidden border border-gray-100">
           {stats.map((stat, i) => (
             <motion.div
               key={i}
               whileHover={{ backgroundColor: "#f8faff" }}
-              className="stat-item bg-white p-8 md:p-10 flex flex-col gap-2 transition-colors"
+              className="stat-item bg-white p-6 sm:p-8 md:p-10 flex flex-col gap-2 transition-colors"
             >
               <span
-                className="text-5xl md:text-6xl font-black text-gray-950 leading-none"
+                className="text-4xl sm:text-5xl md:text-6xl font-black text-gray-950 leading-none"
                 style={{ fontFamily: "Space Grotesk, sans-serif" }}
               >
                 {stat.value}
@@ -83,7 +83,7 @@ export function Stats() {
         </div>
 
         {/* Horizontal rule */}
-        <div className="mt-20 pt-20 border-t border-gray-100 grid md:grid-cols-3 gap-10">
+        <div className="mt-12 md:mt-20 pt-12 md:pt-20 border-t border-gray-100 grid gap-10 md:grid-cols-3">
           {[
             {
               title: "Trusted by Startups",

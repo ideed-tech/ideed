@@ -34,7 +34,7 @@ const AnimatedFeatureSpotlight = React.forwardRef<HTMLElement, AnimatedFeatureSp
       <section
         ref={ref}
         className={cn(
-          'w-full max-w-6xl mx-auto p-8 md:p-12 rounded-2xl bg-background border overflow-hidden', // Added overflow-hidden for cleaner animations
+          'w-full max-w-6xl mx-auto p-6 sm:p-8 md:p-12 rounded-2xl bg-background border overflow-hidden', // Added overflow-hidden for cleaner animations
           className
         )}
         aria-labelledby="feature-spotlight-heading"
@@ -51,11 +51,11 @@ const AnimatedFeatureSpotlight = React.forwardRef<HTMLElement, AnimatedFeatureSp
             </div>
             <h2
               id="feature-spotlight-heading"
-              className="text-4xl lg:text-5xl font-bold tracking-tight text-foreground animate-in fade-in slide-in-from-top-4 duration-700 delay-150"
+              className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-foreground animate-in fade-in slide-in-from-top-4 duration-700 delay-150"
             >
               {heading}
             </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed animate-in fade-in slide-in-from-top-4 duration-700 delay-300">
+            <p className="text-base sm:text-lg text-muted-foreground leading-relaxed animate-in fade-in slide-in-from-top-4 duration-700 delay-300">
               {description}
             </p>
             {buttonText && (

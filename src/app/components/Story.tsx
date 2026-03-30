@@ -16,11 +16,11 @@ export function Story() {
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   return (
-    <section id="story" ref={sectionRef} className="py-28 relative overflow-hidden bg-[#F6F8FB]">
+    <section id="story" ref={sectionRef} className="py-16 md:py-28 relative overflow-hidden bg-[#F6F8FB]">
       {/* Large watermark */}
       <div className="absolute inset-0 flex items-center justify-end pr-8 pointer-events-none select-none overflow-hidden">
         <span
-          className="text-[180px] md:text-[240px] font-black text-gray-200/60 leading-none"
+          className="text-[100px] sm:text-[140px] md:text-[240px] font-black text-gray-200/60 leading-none"
         >
           iDEED
         </span>
@@ -84,7 +84,7 @@ export function Story() {
       </div>
 
       {/* Vision & Mission */}
-      <div className="max-w-6xl mx-auto px-6 mt-48 relative grid md:grid-cols-2 gap-8 items-stretch">
+      <div className="max-w-6xl mx-auto px-6 mt-24 md:mt-48 relative grid md:grid-cols-2 gap-8 items-stretch">
         <AnimatedFeatureSpotlight
           preheaderIcon={<Eye className="h-5 w-5 text-gray-400 group-hover:text-blue-600 transition-colors duration-300" />}
           preheaderText="Philosophy"

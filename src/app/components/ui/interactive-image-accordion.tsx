@@ -44,9 +44,9 @@ const AccordionItem: React.FC<AccordionItemProps> = ({ item, isActive, onMouseEn
   return (
     <div
       className={`
-        relative h-[450px] rounded-2xl overflow-hidden cursor-pointer
-        transition-all duration-700 ease-in-out
-        ${isActive ? 'w-[400px]' : 'w-[60px]'}
+        relative h-[300px] sm:h-[400px] md:h-[450px] rounded-2xl overflow-hidden cursor-pointer
+        transition-all duration-700 ease-in-out flex-shrink-0
+        ${isActive ? 'w-[200px] sm:w-[300px] md:w-[400px]' : 'w-[40px] sm:w-[50px] md:w-[60px]'}
       `}
       onMouseEnter={onMouseEnter}
     >
