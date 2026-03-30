@@ -21,7 +21,7 @@ const projects = [
     title: "Nexus IoT Platform",
     subtitle: "Enterprise Hardware Management",
     tag: "IoT / Dashboard",
-    link: "#"
+    link: "https://triphase-agro-3aa4-git-main-sivas-projects-8e66567b.vercel.app/"
   },
   {
     title: "Triphase Agro",
@@ -96,41 +96,46 @@ export function Portfolio({ images }: PortfolioProps) {
         {/* Grid — 2 columns */}
         <div className="portfolio-grid grid md:grid-cols-2 gap-6">
           {projects.map((project, i) => (
-            <a 
-              key={i} 
-              href={project.link} 
-              target={project.link.startsWith("http") ? "_blank" : "_self"} 
-              rel="noopener noreferrer"
-              className="block"
+            <motion.div
+              key={i}
+              whileHover={{ scale: 1.015 }}
+              transition={{ type: "spring", stiffness: 300, damping: 25 }}
+              className="portfolio-card group bg-gray-50/50 rounded-[2rem] p-4 border border-transparent hover:border-gray-100 transition-all"
             >
-              <motion.div
-                whileHover={{ scale: 1.015 }}
-                transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                className="portfolio-card group cursor-pointer"
-              >
-                {/* Image */}
-                <div className="relative rounded-2xl overflow-hidden bg-gray-900 aspect-[4/3]">
-                  <ImageWithFallback
-                    src={images[imgKeys[i]]}
-                    alt={project.title}
-                    className="w-full h-full object-cover opacity-70 group-hover:opacity-85 group-hover:scale-105 transition-all duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs font-medium">
-                      {project.tag}
-                    </span>
-                  </div>
+              {/* Image */}
+              <div className="relative rounded-2xl overflow-hidden bg-gray-900 aspect-[4/3]">
+                <ImageWithFallback
+                  src={images[imgKeys[i]]}
+                  alt={project.title}
+                  className="w-full h-full object-cover opacity-70 group-hover:opacity-85 group-hover:scale-105 transition-all duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                <div className="absolute top-4 left-4">
+                  <span className="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-[10px] uppercase font-bold tracking-wider">
+                    {project.tag}
+                  </span>
                 </div>
-                {/* Info */}
-                <div className="mt-4 space-y-0.5">
+              </div>
+
+              {/* Info */}
+              <div className="mt-5 px-2 flex items-center justify-between">
+                <div>
                   <p className="font-bold text-gray-950 text-base">
                     {project.title}
                   </p>
-                  <p className="text-gray-400 text-sm">{project.subtitle}</p>
+                  <p className="text-gray-400 text-xs mt-0.5">{project.subtitle}</p>
                 </div>
-              </motion.div>
-            </a>
+                
+                <a 
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-600 text-white text-xs font-bold hover:bg-blue-700 transition-colors shadow-lg shadow-blue-500/20"
+                >
+                  Live Demo <ArrowRight size={14} />
+                </a>
+              </div>
+            </motion.div>
           ))}
         </div>
 

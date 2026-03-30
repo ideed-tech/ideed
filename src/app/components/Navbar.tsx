@@ -8,9 +8,7 @@ const navLinks = [
   { label: "Home", href: "home" },
   { label: "Story", href: "story" },
   { label: "Solutions", href: "solutions" },
-  { label: "Process", href: "process" },
   { label: "Portfolio", href: "portfolio" },
-  { label: "Stats", href: "stats" },
 ];
 
 export function Navbar() {
@@ -118,51 +116,9 @@ export function Navbar() {
             Start Your Project
           </motion.button>
         </div>
-
-        {/* Mobile toggle */}
-        <button
-          className="md:hidden p-2 text-gray-800 hover:text-black hover:bg-white/20 rounded-full transition-colors"
-          onClick={() => setMobileOpen(!mobileOpen)}
-        >
-          {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
       </div>
 
-      {/* Mobile menu */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -10, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -10, scale: 0.95 }}
-            className="md:hidden absolute top-[115%] left-0 right-0 bg-white/60 backdrop-blur-3xl border border-white/50 shadow-2xl rounded-3xl overflow-hidden"
-          >
-            <div className="px-4 py-5 flex flex-col gap-2">
-              {navLinks.map((link) => (
-                <button
-                  key={link.label}
-                  onClick={() => scrollTo(link.href)}
-                  className={`text-left px-5 py-3 rounded-2xl text-base transition-all ${
-                    activeSection === link.href
-                      ? "text-blue-700 font-bold bg-white/50 shadow-sm border border-white/60"
-                      : "text-gray-700 hover:text-gray-900 font-medium hover:bg-white/30"
-                  }`}
-                >
-                  {link.label}
-                </button>
-              ))}
-              <div className="pt-2 pb-1 px-1">
-                <button
-                  onClick={() => scrollTo("contact")}
-                  className="w-full py-4 rounded-2xl bg-blue-600/90 text-white text-base font-bold text-center shadow-[0_4px_14px_rgba(37,99,235,0.3)] border border-blue-400/30 backdrop-blur-md"
-                >
-                  Start Your Project
-                </button>
-              </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Mobile menu removed per request */}
     </motion.nav>
   );
 }
