@@ -21,11 +21,13 @@ const projects = [
     title: "Nexus IoT Platform",
     subtitle: "Enterprise Hardware Management",
     tag: "IoT / Dashboard",
+    link: "#"
   },
   {
-    title: "Verse Brand Studio",
-    subtitle: "Digital Identity & Design System",
-    tag: "UI/UX / Branding",
+    title: "Triphase Agro",
+    subtitle: "Advanced Agricultural Intelligence",
+    tag: "Smart Agriculture",
+    link: "https://triphase-agro-3aa4-git-main-sivas-projects-8e66567b.vercel.app/"
   },
 ];
 
@@ -94,34 +96,41 @@ export function Portfolio({ images }: PortfolioProps) {
         {/* Grid — 2 columns */}
         <div className="portfolio-grid grid md:grid-cols-2 gap-6">
           {projects.map((project, i) => (
-            <motion.div
-              key={i}
-              whileHover={{ scale: 1.015 }}
-              transition={{ type: "spring", stiffness: 300, damping: 25 }}
-              className="portfolio-card group cursor-pointer"
+            <a 
+              key={i} 
+              href={project.link} 
+              target={project.link.startsWith("http") ? "_blank" : "_self"} 
+              rel="noopener noreferrer"
+              className="block"
             >
-              {/* Image */}
-              <div className="relative rounded-2xl overflow-hidden bg-gray-900 aspect-[4/3]">
-                <ImageWithFallback
-                  src={images[imgKeys[i]]}
-                  alt={project.title}
-                  className="w-full h-full object-cover opacity-70 group-hover:opacity-85 group-hover:scale-105 transition-all duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-                <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs font-medium">
-                    {project.tag}
-                  </span>
+              <motion.div
+                whileHover={{ scale: 1.015 }}
+                transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                className="portfolio-card group cursor-pointer"
+              >
+                {/* Image */}
+                <div className="relative rounded-2xl overflow-hidden bg-gray-900 aspect-[4/3]">
+                  <ImageWithFallback
+                    src={images[imgKeys[i]]}
+                    alt={project.title}
+                    className="w-full h-full object-cover opacity-70 group-hover:opacity-85 group-hover:scale-105 transition-all duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs font-medium">
+                      {project.tag}
+                    </span>
+                  </div>
                 </div>
-              </div>
-              {/* Info */}
-              <div className="mt-4 space-y-0.5">
-                <p className="font-bold text-gray-950 text-base">
-                  {project.title}
-                </p>
-                <p className="text-gray-400 text-sm">{project.subtitle}</p>
-              </div>
-            </motion.div>
+                {/* Info */}
+                <div className="mt-4 space-y-0.5">
+                  <p className="font-bold text-gray-950 text-base">
+                    {project.title}
+                  </p>
+                  <p className="text-gray-400 text-sm">{project.subtitle}</p>
+                </div>
+              </motion.div>
+            </a>
           ))}
         </div>
 
